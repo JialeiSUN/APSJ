@@ -1,0 +1,82 @@
+@startuml
+!include C:\Users\sefka\OneDrive\Documents\Sefkan\Travail\Nanterre\M1\Master 1\Semestre 2\Archi\APSJ\commons.style
+'https://plantuml.com/class-diagram
+
+class Commande
+class User
+enum Catégorie
+
+
+Catégorie <- Article
+User <--- Panier
+Article <- Panier
+Panier <- Commande
+Role <- User
+User <|-- Administrateur
+
+
+
+class Administrateur{
+Article AjouterArticle()
+Article UpdateArticle()
+void DeleteArticle()
+Article AjouterCatégorie()
+Article UpdateCatégorie()
+void DeleteCatégorie()
+}
+
+class Recherche {
+ArrayList<Article> Rechercher(String s)
+
+Article getArticle(Int id)
+
+}
+
+
+class Commande {
+Int id
+Int REF_PANIER
+Date Date_Livraison
+}
+
+class Panier{
+Int id,
+ArrayList<Article> ListeArticles
+Int REF_USER
+Double Prix_Total
+}
+
+class User{
+Int id,
+String MotDePasse
+String Prénom
+String nom
+Role Role
+}
+
+enum Role{
+User
+Admin
+}
+
+class Article {
+Int id
+String Libellé
+String Marque
+Double Prix
+Catégorie Catégorie
+}
+
+enum Catégorie {
+PC Portable
+PC de Bureau
+Accessoires ordinateurs
+Smart phone
+Tel Fixe
+Accessoires téléphone
+Disque dur
+Clé USB
+Accessoires stockage
+}
+
+@enduml
