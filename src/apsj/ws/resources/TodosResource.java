@@ -1,4 +1,4 @@
-package rest.todo.resources;
+package apsj.ws.resources;
 
 
 import java.io.IOException;

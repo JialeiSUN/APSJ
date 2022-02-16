@@ -6,6 +6,7 @@ public class User {
 	private String MotDePasse;
 	private String Prenom;
 	private String Nom;
+	private Role role;
 	
 	public int getUserId() {
 		return UserId;
@@ -32,6 +33,12 @@ public class User {
 	}
 	public void setNom(String nom) {
 		Nom = nom;
+	}
+	private Role getRole() {
+		return role;
+	}
+	private void setRole(Role role) {
+		this.role = role;
 	}
 	
 	

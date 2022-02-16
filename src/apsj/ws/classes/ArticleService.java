@@ -7,7 +7,7 @@ import classes.Categorie;
 import javax.ejb.Stateless;
 import javax.jws.WebService;
 
-@Stateless
+
 @WebService(targetNamespace="http://apsj.ws.classes/article",endpointInterface="apsj.ws.classes.ArticleServiceRemote")
 public class ArticleService implements ArticleServiceRemote {
 

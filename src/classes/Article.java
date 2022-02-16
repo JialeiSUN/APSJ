@@ -8,6 +8,14 @@ public class Article {
 	private double prix;
 	private Categorie categorie;
 	
+	public Article(int id, String libelle, String marque, double prix, Categorie categorie) {
+		this.ArticleId=id;
+		this.Libelle=libelle;
+		this.Marque=marque;
+		this.prix=prix;
+		this.categorie=categorie;
+	}
+	
 	public int getArticleId() {
 		return ArticleId;
 	}
