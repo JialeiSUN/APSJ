@@ -1,44 +1,59 @@
-<!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container px-4 px-lg-5">
-    <a class="navbar-brand">APSJ</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+  <img src="https://c.tenor.com/I2g_J13K3hsAAAAd/virtual-youtuber-sakura-miko.gif" height="60px">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Elite Shop</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Accueil</a></li>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/">Home</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Ordinateurs
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" routerLink="/PcPortable">Pc Portable</a></li>
+            <li><a class="dropdown-item" routerLink="/PcBureau">PC Bureau</a></li>
+            <li><a class="dropdown-item" routerLink="/PcAccessoires">Accessoires</a></li>
+          </ul>
+        </li>
 
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"  data-toggle="dropdown" aria-haspopup="true">Ordinateurs</a>
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Téléphonies
+          </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#!">PC Portable</a></li>
-            <li><a class="dropdown-item" href="#!">PC de Bureau</a></li>
-            <li><a class="dropdown-item" href="#!">Accessoires</a></li>
+            <li><a class="dropdown-item" routerLink="/SmartPhone">Smart Phone</a></li>
+            <li><a class="dropdown-item" routerLink="/TelFixe">Tel Fixe</a></li>
+            <li><a class="dropdown-item" routerLink="/TelAccessoires">Accessoires</a></li>
           </ul>
         </li>
+
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-toggle="dropdown" aria-haspopup="true">Téléphonies</a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
-            <li><a class="dropdown-item" href="#!">Smart Phone</a></li>
-            <li><a class="dropdown-item" href="#!">Tel Fixe</a></li>
-            <li><a class="dropdown-item" href="#!">Accessoires</a></li>
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Stockage
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" routerLink="/DisqueDur">Disque dur</a></li>
+            <li><a class="dropdown-item" routerLink="/CleUSB">Clé USB</a></li>
+            <li><a class="dropdown-item" routerLink="/StockageAccessoires">Accessoires</a></li>
           </ul>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" id="navbarDropdown3" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-toggle="dropdown" aria-haspopup="true">Stockage</a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown3">
-            <li><a class="dropdown-item" href="#!">Disque Dur</a></li>
-            <li><a class="dropdown-item" href="#!">Clé USB</a></li>
-            <li><a class="dropdown-item" href="#!">Accessoires</a></li>
-          </ul>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/Connexion">Connexion</a>
         </li>
-        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Connexion</a></li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/Register">Register</a>
+        </li>
+
       </ul>
       <form class="d-flex">
-        <button class="btn btn-outline-dark" type="submit">
-          <i class="bi-cart-fill me-1"></i>
-          Cart
-          <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-        </button>
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
     </div>
   </div>
