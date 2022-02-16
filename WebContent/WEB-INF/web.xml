@@ -15,6 +15,6 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns
   </servlet>
   <servlet-mapping>
     <servlet-name>Jersey REST Service</servlet-name>
-    <url-pattern>/rest/*</url-pattern>
+    <url-pattern>/apsj/*</url-pattern>
   </servlet-mapping>
 </web-app>

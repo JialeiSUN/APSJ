@@ -48,7 +48,16 @@ import rest.todo.model.Todo;
     public String getArticles() {
         List<Article> todos = new ArrayList<Article>();
         //todos.addAll(TodoDao.instance.getModel().values());
-        return "Hello";
+        return "Ici vous récupérerez tous les articles disponibles";
+    }
+    
+    @GET
+    @Path("PCBureau")
+    @Produces(MediaType.TEXT_HTML)
+    public String getPCBureau() {
+        List<Article> todos = new ArrayList<Article>();
+        //todos.addAll(TodoDao.instance.getModel().values());
+        return "Ici vous récupérerez tous les pc de bureau";
     }
 
 
