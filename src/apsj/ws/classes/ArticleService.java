@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import classes.Article;
 import classes.Categorie;
-import javax.ejb.Stateless;
 import javax.jws.WebService;
 
 

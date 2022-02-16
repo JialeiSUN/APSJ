@@ -11,7 +11,11 @@ public class Commande {
 	
 	public Commande() {}
 	
-	public Commande(int id, Panier ref)
+	public Commande(int id, int ref, Date date) {
+		this.id=id;
+		this.REF_PANIER=ref;
+		this.DateLivraison=date;
+	}
 	
 	private int getId() {
 		return id;

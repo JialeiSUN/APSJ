@@ -32,7 +32,7 @@ public class ArticleResource {
     @GET
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public Todo getTodo() {
-        Todo todo = ArticleDao.instance.getModel().get(id);
+        Todo todo = new Todo();
         if(todo==null)
             throw new RuntimeException("Get: Todo with " + id +  " not found");
         return todo;
