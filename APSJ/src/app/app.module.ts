@@ -22,6 +22,7 @@ import { CleUsbComponent } from './cle-usb/cle-usb.component';
 import { StockageAccessoiresComponent } from './stockage-accessoires/stockage-accessoires.component';
 import { RegisterComponent } from './register/register.component';
 import { ArticleComponent } from './article/article.component';
+import { ArticlesModule } from './articles/articles.module';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { ArticleComponent } from './article/article.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    ArticlesModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

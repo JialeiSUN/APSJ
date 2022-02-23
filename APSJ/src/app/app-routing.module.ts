@@ -12,6 +12,7 @@ import { DisqueDurComponent } from "./disque-dur/disque-dur.component"
 import { StockageAccessoiresComponent } from "./stockage-accessoires/stockage-accessoires.component"
 import { CleUsbComponent } from "./cle-usb/cle-usb.component"
 import { RegisterComponent } from "./register/register.component"
+import { ArticleComponent } from "./article/article.component"
 
 const routes: Routes = [
   { path: "",component: HomeComponent },
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: "StockageAccessoires",component: StockageAccessoiresComponent },
   { path: "CleUSB",component: CleUsbComponent },
   { path: "Register",component: RegisterComponent },
+  { path: "Article",component: ArticleComponent },
 
 ];
 

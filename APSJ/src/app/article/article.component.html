@@ -1,1 +1,24 @@
-<p>article works!</p>
+<app-menu></app-menu>
+<p>Achat en ligne</p>
+
+<h2>Interpolation</h2>
+<p> Le nom de l'article est: {{nom_Article}} </p>
+<p> La taille de l'article est: {{taille_Article}} </p>
+<p> La couleur de l'article est: {{couleur_Article}} </p>
+
+<h1>Sans utilisation des pipes</h1>
+<p>{{maDate}}</p>
+<h1>Avec Utilisation des pipes</h1>
+<p>{{maDate | date:'d MMM y' | uppercase}} Format Date: d MMM y </p>
+<p>{{maDate | date:'dd/MM/y'}} Format Date: dd/MM/y </p>
+
+<h3>Bouton onClick</h3>
+<p>{{message}}</p>
+<button [disabled]="confirmation" on-click="OnAchatArticle()" class ="btn btn-info">Achat Article</button>
+
+<h5>Veuillez saisir la catégorie des articles souhaitée: </h5>
+<input type="text" class="form-control" (input)="OnChoixCategorie($event)">
+Vous avez tapé: {{nomCategorie}}
+
+<div [class.my-class-couleur]="isColorChanged">Changez la couleur en cliquant sur le bouton</div>
+<button class="btn btn-warning" (click)="isColorChanged = !isColorChanged;">Modifier la couleur</button>

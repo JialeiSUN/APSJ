@@ -9,9 +9,10 @@
 
     <!-- Login Form -->
     <form>
-      <input type="text" id="login" class="fadeIn second" name="login" placeholder="Login">
-      <input type="text" id="password" class="fadeIn third" name="login" placeholder="Password">
-      <input type="submit" class="fadeIn fourth" value="Log In">
+      <input type="text" id="login" class="fadeIn second" name="login" placeholder="Login" (input)="OnLogin($event)">
+      <input type="password" id="password" class="fadeIn third" name="password" placeholder="Password" (input)="OnMdp($event)">
+      <input type="submit" class="fadeIn fourth" on-click="onSubmit()" value="Log In">
+      <p>{{messageError}}</p>
     </form>
 
     <div id="formFooter">
