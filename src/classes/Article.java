@@ -16,6 +16,8 @@ public class Article {
 		this.categorie=categorie;
 	}
 	
+	public Article() {}
+
 	public int getArticleId() {
 		return ArticleId;
 	}

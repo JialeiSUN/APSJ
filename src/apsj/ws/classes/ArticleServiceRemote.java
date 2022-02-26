@@ -25,18 +25,30 @@ public interface ArticleServiceRemote {
 	
 	@WebMethod(action="urn:view",operationName="ViewArticle")
 	public @WebResult(name="viewResponse")
-	ArrayList<Article> viewArticle(); 
+		ArrayList<Article> viewArticle(); 
 	
 	@WebMethod(action="urn:delete",operationName="DeleteArticle")
 	public @WebResult(name="viewResponse")
-	boolean deleteArticle(@WebParam(name="ArticleId")
+		boolean deleteArticle(@WebParam(name="ArticleId")
 										int id); 
 	
 	@WebMethod(action="urn:",operationName="DeleteArticle")
 	public @WebResult(name="viewResponse")
-	ArrayList<Article> viewArticleCategorie(@WebParam(name="ArticleCategorie")
+		ArrayList<Article> viewArticleCategorie(@WebParam(name="ArticleCategorie")
 										Categorie categorie); 
 	
+	@WebMethod(action="urn:",operationName="DeleteArticle")
+	public @WebResult(name="viewResponse")
+		Article viewArticleById(@WebParam(name="ArticleId")
+										Integer id); 
 	
+	
+	@WebMethod(action="urn:",operationName="CountArticle")
+	public @WebResult(name="viewResponse")
+		int countArticle();
+	
+	@WebMethod(action="urn:",operationName="CountArticle")
+	public @WebResult(name="viewResponse")
+		int countArticleCategorie(@WebParam(name="ArticleCategorie") Categorie categorie);
 
 }

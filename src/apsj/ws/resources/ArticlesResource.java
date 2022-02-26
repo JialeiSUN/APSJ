@@ -33,7 +33,6 @@ import java.sql.SQLException;
 	
 	private String categorie;
 	
-
 	// Allows to insert contextual objects into the class,
     // e.g. ServletContext, Request, Response, UriInfo
     @Context
@@ -64,7 +63,7 @@ import java.sql.SQLException;
         return result;
     }
     
-  //Returns the list of PCBureau
+  //Returns the list of articles for a specific category
     @GET
     @Path("/{categorie}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -76,6 +75,18 @@ import java.sql.SQLException;
         for(int i=0;i<todos.size();i++) {
         	result+=todos.get(i).toString();
         }
+        return result;
+    }
+    
+    //Returns the characteristics of a specific Article 
+    @GET
+    @Path("/id/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getArticlesForAnId(@PathParam("id") Integer id) {
+        Article article = new Article();
+    	ArticleService a= new ArticleService();
+    	article = a.viewArticleById(id);
+        String result = article.toString();
         return result;
     }   
 
