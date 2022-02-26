@@ -1,7 +1,7 @@
 package classes;
 
 public enum Categorie {
-		PC_PORTABLE
+		PC_Portable
 		,PC_de_Bureau
 		,Accessoires_ordinateurs
 		,Smart_phone

@@ -5,14 +5,14 @@ public class Article {
 	private int ArticleId;
 	private String Libelle;
 	private String Marque;
-	private double prix;
+	private double Prix;
 	private Categorie categorie;
 	
 	public Article(int id, String libelle, String marque, double prix, Categorie categorie) {
 		this.ArticleId=id;
 		this.Libelle=libelle;
 		this.Marque=marque;
-		this.prix=prix;
+		this.Prix=prix;
 		this.categorie=categorie;
 	}
 	
@@ -38,10 +38,10 @@ public class Article {
 	}
 	
 	public double getPrix() {
-		return prix;
+		return Prix;
 	}
 	public void setPrix(double prix) {
-		this.prix = prix;
+		this.Prix = prix;
 	}
 	
 	public Categorie getCategorie() {
@@ -51,9 +51,11 @@ public class Article {
 		this.categorie = categorie;
 	}
 	
+	public String toString() {
+		String str= this.ArticleId +" "+ this.Libelle +" "+  this.Marque  +" "+  this.Prix  +" "+  this.categorie + "\n";
 	
-	
-	
+		return str;
+	}
 	
 	
 	

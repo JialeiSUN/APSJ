@@ -17,15 +17,23 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Request;
 import javax.ws.rs.core.UriInfo;
 
+import apsj.ws.classes.ArticleService;
 import classes.Article;
+import classes.Categorie;
 import rest.todo.dao.TodoDao;
 import rest.todo.model.Todo;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 /// Will map the resource to the URL articles
 @Path("/articles")
  public class ArticlesResource {
 
 	
+	private String categorie;
+	
+
 	// Allows to insert contextual objects into the class,
     // e.g. ServletContext, Request, Response, UriInfo
     @Context
@@ -42,35 +50,36 @@ import rest.todo.model.Todo;
         return todos;
     }
     
- // Return the list of articles to the user in the browser
+ // Return the list of articles to the user in the browser in JSON format
     @GET
-    @Produces(MediaType.TEXT_HTML)
+    @Produces({MediaType.APPLICATION_JSON })
     public String getArticles() {
         List<Article> todos = new ArrayList<Article>();
-        //todos.addAll(TodoDao.instance.getModel().values());
-        return "Ici vous récupérerez tous les articles disponibles";
+        ArticleService a= new ArticleService();
+        todos = a.viewArticle();
+        String result ="";
+        for(int i=0;i<todos.size();i++) {
+        	result+=todos.get(i).toString();
+        }
+        return result;
     }
     
+  //Returns the list of PCBureau
     @GET
-    @Path("PCBureau")
-    @Produces(MediaType.TEXT_HTML)
-    public String getPCBureau() {
-        List<Article> todos = new ArrayList<Article>();
-        //todos.addAll(TodoDao.instance.getModel().values());
-        return "Ici vous récupérerez tous les pc de bureau";
-    }
+    @Path("/{categorie}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getArticlesForACategory(@PathParam("categorie") Categorie categorie) {
+    	List<Article> todos = new ArrayList<Article>();
+        ArticleService a= new ArticleService();
+        todos = a.viewArticleCategorie(categorie);
+        String result ="";
+        for(int i=0;i<todos.size();i++) {
+        	result+=todos.get(i).toString();
+        }
+        return result;
+    }   
 
-
-    // Return the list of articles for applications
-    @GET
-    @Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
-    public List<Article> getTodos() {
-        List<Article> todos = new ArrayList<Article>();
-        //todos.addAll(TodoDao.instance.getModel().values());
-        return todos;
-    }
-
-    // retuns the number of articles
+    // returns the number of articles
     // Use http://localhost:8080/com.vogella.jersey.todo/rest/articles/count
     // to get the total number of records
     @GET
@@ -78,7 +87,7 @@ import rest.todo.model.Todo;
     @Produces(MediaType.TEXT_PLAIN)
     public String getCount() {
         int count = TodoDao.instance.getModel().size();
-        return String.valueOf(count);
+        return "il y a " + String.valueOf(count);
     }
 
     @POST
