@@ -1,0 +1,5 @@
+WebContent/
+.project
+*.jar
+.settings/
+.classpath
