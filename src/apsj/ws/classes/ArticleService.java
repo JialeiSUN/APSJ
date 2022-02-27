@@ -1,6 +1,7 @@
 package apsj.ws.classes;
 
 import java.sql.Connection;
+
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
@@ -28,8 +29,6 @@ public class ArticleService implements ArticleServiceRemote {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
-
 	//Update an existing Article
 	@Override
 	public boolean updateArticle(int id) {
@@ -96,7 +95,6 @@ public class ArticleService implements ArticleServiceRemote {
 	
 	
 	//returns the list of all Articles
-	
 	@Override
 	public ArrayList<Article> viewArticle() {
 		ArrayList<Article> result= new ArrayList<Article>();
@@ -104,7 +102,6 @@ public class ArticleService implements ArticleServiceRemote {
         java.sql.Statement s = null;
 		try {
 			Connection conn = sqlconnexion.conn;
-			
 			s= conn.createStatement();
 		} catch (SQLException e1) {
 			e1.printStackTrace();
@@ -170,6 +167,5 @@ public class ArticleService implements ArticleServiceRemote {
 		}
         return result;
 	}
-
 
 }

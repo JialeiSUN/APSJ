@@ -19,7 +19,7 @@ public class Connexion {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-            if (this.conn!= null) {
+            if (conn!= null) {
                 System.out.println("sucess");
             }
             else {

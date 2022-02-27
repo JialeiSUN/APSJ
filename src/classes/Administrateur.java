@@ -11,6 +11,8 @@ public class Administrateur extends User {
 		
 	}*/
 	
+
+
 	public void deleteArticle(int idArticle) {
 		
 	}
