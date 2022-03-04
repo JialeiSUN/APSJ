@@ -1,11 +1,15 @@
 package apsj.ws.classes;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebResult;
 import javax.jws.WebService;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import classes.User;
 
@@ -33,5 +37,7 @@ public interface UserServiceRemote {
 	@WebMethod(action="urn:view",operationName="ViewUser")
 	public @WebResult(name="viewResponse")
 	User findUserByEmail(@WebParam(name="UserEmail")
-		String email);  
+		String email);
+
+	void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;  
 }
