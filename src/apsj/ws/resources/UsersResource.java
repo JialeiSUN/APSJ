@@ -13,21 +13,13 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Request;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.UriInfo;
-
 import org.glassfish.jersey.process.internal.RequestScoped;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import apsj.ws.classes.UserService;
 import classes.Persone;
 import classes.User;
-import rest.todo.dao.TodoDao;
-import rest.todo.model.Todo;
 @RequestScoped
 @Path("/users")
 @Consumes({"application/json","application/xml"})
@@ -65,19 +57,24 @@ public class UsersResource {
     @Produces(MediaType.TEXT_PLAIN)
     public String addUser( User user)
              {  
-    	Gson gson = new Gson();
+    	/*Gson gson = new Gson();
       	String json = gson.toJson(user.tomap());
-        return json; 
+        return json; */
+    	String response = "hello" + user.getNom() + " " + user.getPrenom();
+    	System.out.println(response);
+    	return response;
         }
     
     @POST
     @Path("/test")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
-    public String testPersone(Persone persone) {
-    	String response = "hello" + persone.getNom() + " " + persone.getPrenom();
-    	System.out.println(response);
-    	return response;
+    public String testPersone(User user) {
+    	Gson gson = new Gson();
+      	String json = gson.toJson(user.tomap());
+      	System.out.print(json);
+        return json; 
+        
     }
 
 
