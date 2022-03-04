@@ -1,0 +1,71 @@
+
+    {
+    "/APSJ/rest/*": {
+    "target": "http://localhost:8080",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true,
+    "headers": {
+      "Connection": "keep-alive"
+      }
+  },
+  "/rest/*": {
+    "target": "http://localhost:8080",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true
+    ,
+    "headers": {
+      "Connection": "keep-alive"
+      }
+  },
+  "/APSJ/*": {
+    "target": "http://localhost:8080",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true
+    ,
+    "headers": {
+      "Connection": "keep-alive"
+      }
+  },
+  "/APSJ/rest/user/*": {
+    "target": "http://localhost:8080",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true
+    ,
+    "headers": {
+      "Connection": "keep-alive"
+      }
+  },
+  "/rest/user/*": {
+    "target": "http://localhost:8080",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true,
+    "headers": {
+      "Connection": "keep-alive"
+      }
+
+  },
+  "/rest/user/siginup": {
+    "target": "http://localhost:8080",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true,
+    "headers": {
+      "Connection": "keep-alive"
+      }
+  },
+  "/APSJ/rest/user/siginup": {
+    "target": "http://localhost:8080",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true,
+    "headers": {
+      "Connection": "keep-alive"
+      }
+  }
+}
+

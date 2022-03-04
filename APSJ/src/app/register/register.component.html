@@ -6,15 +6,19 @@
 <div class="container" id="wrap">
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
-      <form action="r" method="post" accept-charset="utf-8" class="form" role="form">   <legend>Sign Up</legend>
+      <form [formGroup]="registerForm" (ngSubmit)="signUp()" action="r" method="post" accept-charset="utf-8" class="form" role="form">   <legend>Sign Up</legend>
         <h4>It's free and always will be.</h4>
         <div class="row">
           <div class="col-xs-6 col-md-6">
-            <input type="text" name="firstname" value="" class="form-control input-lg" placeholder="First Name"  />                        </div>
+            <input formControlName="nom" type="text" name="firstname" value="" class="form-control input-lg" placeholder="First Name"  />                        </div>
           <div class="col-xs-6 col-md-6">
-            <input type="text" name="lastname" value="" class="form-control input-lg" placeholder="Last Name"  />                        </div>
+            <input formControlName="prenom" type="text" name="lastname" value="" class="form-control input-lg" placeholder="Last Name"  />                        </div>
         </div>
-        <input type="text" name="email" value="" class="form-control input-lg" placeholder="Your Email"  /><input type="password" name="password" value="" class="form-control input-lg" placeholder="Password"  /><input type="password" name="confirm_password" value="" class="form-control input-lg" placeholder="Confirm Password"  />
+        <input formControlName="email" type="text" name="email" value="" class="form-control input-lg" placeholder="Your Email"  />
+        <input formControlName="password" type="password" name="password" value="" class="form-control input-lg" placeholder="Password"  />
+        <input type="password" name="confirm_password" value="" class="form-control input-lg" placeholder="Confirm Password"  />
+        <input formControlName="telephone" type="text" name="telephone" value="" class="form-control input-lg" placeholder="Your Telephone Number"  />
+        <input formControlName="adresse" type="text" name="addresse" value="" class="form-control input-lg" placeholder="Your Addresse"  />
         <button class="btn btn-lg btn-primary btn-block signup-btn" type="submit">
           Create my account</button>
       </form>

@@ -15,7 +15,8 @@ import { RegisterComponent } from "./register/register.component"
 import { ArticleComponent } from "./article/article.component"
 
 const routes: Routes = [
-  { path: "",component: HomeComponent },
+  { path: "",redirectTo:'Connexion',pathMatch:'full' },
+ // { path: "",component: HomeComponent },
   { path: "PcPortable",component: PcPortableComponent },
   { path: "PcBureau",component: PcBureauComponent },
   { path: "PcAccessoires",component: PcAccessoiresComponent },

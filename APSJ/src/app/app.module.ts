@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import {FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http' ;
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './Components/menu/menu.component';
@@ -23,6 +24,7 @@ import { StockageAccessoiresComponent } from './stockage-accessoires/stockage-ac
 import { RegisterComponent } from './register/register.component';
 import { ArticleComponent } from './article/article.component';
 import { ArticlesModule } from './articles/articles.module';
+import { ObservableComponent } from './observable/observable.component';
 
 @NgModule({
   declarations: [
@@ -45,12 +47,17 @@ import { ArticlesModule } from './articles/articles.module';
     StockageAccessoiresComponent,
     RegisterComponent,
     ArticleComponent,
+    ObservableComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
     NgbModule,
     ArticlesModule,
+    HttpClientModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
