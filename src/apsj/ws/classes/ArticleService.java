@@ -27,8 +27,6 @@ public class ArticleService implements ArticleServiceRemote {
 	@Override
 	public boolean insertArticle(Article Article) {
 		String prix=String.valueOf(Article.getPrix());
-		/*String sql = "insert into Article values (" + Article.getArticleId().toString() + ", "+ Article.getLibelle()+ ", "+ Article.getMarque()
-		+", "+ prix + ", "+ Article.getCategorie().toString();*/
 		java.sql.Statement s = null;
 		try {
 			Connection conn = sqlconnexion.conn;
@@ -62,9 +60,36 @@ public class ArticleService implements ArticleServiceRemote {
 
 	//Update an existing Article
 	@Override
-	public boolean updateArticle(Integer id) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean updateArticle(Article Article) {
+		String prix=String.valueOf(Article.getPrix());
+		java.sql.Statement s = null;
+		try {
+			Connection conn = sqlconnexion.conn;
+			s= conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.CONCUR_UPDATABLE);
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+        try { 
+            //Query to retrieve the contents of the employee_data table
+            String query = "select * from Article where id_a = "+ Article.getArticleId().toString();
+            //Executing the query
+            ResultSet rs = s.executeQuery(query);
+            rs.beforeFirst();
+            //Updating the values of the Article
+            while(rs.next()){
+                rs.updateString(2, Article.getLibelle());
+                rs.updateString(3, Article.getMarque());
+                rs.updateString(4, prix);
+                rs.updateString(5, Article.getCategorie().toString());
+               rs.updateRow();
+            };
+            return true;
+        }
+        catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}  
 	}
 
 	@Override

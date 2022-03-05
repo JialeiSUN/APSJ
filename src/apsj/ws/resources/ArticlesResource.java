@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
+import javax.ws.rs.PATCH;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -49,6 +50,17 @@ import java.sql.SQLException;
     	Boolean result = a.insertArticle(article);
         return result.toString();
     }
+    
+    
+    @PATCH
+    @Path("/update")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String updateArticle(Article article) {
+        ArticleService a= new ArticleService();
+    	Boolean result = a.updateArticle(article);
+        return result.toString();
+    }
+    
     
     // Return the list of articles to the user in the browser
     @GET

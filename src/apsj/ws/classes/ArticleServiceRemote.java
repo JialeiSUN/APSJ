@@ -20,8 +20,8 @@ public interface ArticleServiceRemote {
 	
 	@WebMethod(action="urn:update",operationName="UpdateArticle")
 	public @WebResult(name="updateResponse")
-		boolean updateArticle(@WebParam(name="ArticleId")
-										Integer id);
+		boolean updateArticle(@WebParam(name="Article")
+										Article Article);
 	
 	@WebMethod(action="urn:view",operationName="ViewArticle")
 	public @WebResult(name="viewResponse")
