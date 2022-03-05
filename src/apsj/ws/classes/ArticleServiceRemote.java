@@ -21,7 +21,7 @@ public interface ArticleServiceRemote {
 	@WebMethod(action="urn:update",operationName="UpdateArticle")
 	public @WebResult(name="updateResponse")
 		boolean updateArticle(@WebParam(name="ArticleId")
-										int id);
+										Integer id);
 	
 	@WebMethod(action="urn:view",operationName="ViewArticle")
 	public @WebResult(name="viewResponse")
@@ -30,7 +30,7 @@ public interface ArticleServiceRemote {
 	@WebMethod(action="urn:delete",operationName="DeleteArticle")
 	public @WebResult(name="viewResponse")
 		boolean deleteArticle(@WebParam(name="ArticleId")
-										int id); 
+										Integer id); 
 	
 	@WebMethod(action="urn:",operationName="DeleteArticle")
 	public @WebResult(name="viewResponse")

@@ -33,15 +33,32 @@ public class ArticleService implements ArticleServiceRemote {
 
 	//Update an existing Article
 	@Override
-	public boolean updateArticle(int id) {
+	public boolean updateArticle(Integer id) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean deleteArticle(int id) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean deleteArticle(Integer id) {
+		String sql = "select * from Article where id_a = "+ id.toString();
+		java.sql.Statement s = null;
+		try {
+			Connection conn = sqlconnexion.conn;
+			s= conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.CONCUR_UPDATABLE);
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+        try { 
+        	ResultSet rs= s.executeQuery(sql);
+        	rs.next();
+        	rs.deleteRow();
+        	return true;
+        }
+        catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}        
 	}
 	
 	//END CUD methods

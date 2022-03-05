@@ -49,6 +49,23 @@ import java.sql.SQLException;
         return todos;
     }
     
+    
+    //Deletes a a specific article 
+    @GET
+    @Path("/id/{id}/delete")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String deleteArticle(@PathParam("id") Integer id) {
+        Boolean result;
+    	ArticleService a= new ArticleService();
+    	result = a.deleteArticle(id);
+        if (result.equals(true)) {
+        	return "L'article "+ id.toString()+ " a bien été supprimé";
+        }
+        else {
+        	return "L'article "+ id.toString()+ " n'a pas été supprimé";
+        }
+    }   
+    
  // Return the list of articles to the user in the browser in JSON format
     @GET
     @Produces({MediaType.APPLICATION_JSON })
