@@ -40,6 +40,16 @@ import java.sql.SQLException;
     @Context
     Request request;
 
+    
+    @POST
+    @Path("/insert")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String insertArticle(Article article) {
+        ArticleService a= new ArticleService();
+    	Boolean result = a.insertArticle(article);
+        return result.toString();
+    }
+    
     // Return the list of articles to the user in the browser
     @GET
     @Produces(MediaType.TEXT_XML)
@@ -118,21 +128,6 @@ import java.sql.SQLException;
         return "il y a " + String.valueOf(count);
     }
 
-    @POST
-    @Produces(MediaType.TEXT_HTML)
-    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    public void newTodo(@FormParam("id") String id,
-            @FormParam("summary") String summary,
-            @FormParam("description") String description,
-            @Context HttpServletResponse servletResponse) throws IOException {
-        Todo todo = new Todo(id, summary);
-        if (description != null) {
-            todo.setDescription(description);
-        }
-        TodoDao.instance.getModel().put(id, todo);
-
-        servletResponse.sendRedirect("../create_todo.html");
-    }
 
     // Defines that the next path parameter after todos is
     // treated as a parameter and passed to the TodoResources

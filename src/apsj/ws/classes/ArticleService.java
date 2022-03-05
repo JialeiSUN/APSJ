@@ -26,8 +26,37 @@ public class ArticleService implements ArticleServiceRemote {
 	//Insert an Article in the database
 	@Override
 	public boolean insertArticle(Article Article) {
-		// TODO Auto-generated method stub
-		return false;
+		String prix=String.valueOf(Article.getPrix());
+		/*String sql = "insert into Article values (" + Article.getArticleId().toString() + ", "+ Article.getLibelle()+ ", "+ Article.getMarque()
+		+", "+ prix + ", "+ Article.getCategorie().toString();*/
+		java.sql.Statement s = null;
+		try {
+			Connection conn = sqlconnexion.conn;
+			s= conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.CONCUR_UPDATABLE);
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+        try { 
+            //Query to retrieve the contents of the employee_data table
+            String query = "select * from Article";
+            //Executing the query
+            ResultSet rs = s.executeQuery(query);
+            rs.beforeFirst();
+            rs.moveToInsertRow();
+            rs.updateString(1, Article.getArticleId().toString());
+            rs.updateString(2, Article.getLibelle());
+            rs.updateString(3, Article.getMarque());
+            rs.updateString(4, prix);
+            rs.updateString(5, Article.getCategorie().toString());
+            //Deleting a column from the ResultSet object
+            rs.insertRow();        
+        	return true;
+        }
+        catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}  
 	}
 
 

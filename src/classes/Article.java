@@ -8,7 +8,7 @@ public class Article {
 	private double Prix;
 	private Categorie categorie;
 	
-	public Article(int id, String libelle, String marque, double prix, Categorie categorie) {
+	public Article(Integer id, String libelle, String marque, double prix, Categorie categorie) {
 		this.ArticleId=id;
 		this.Libelle=libelle;
 		this.Marque=marque;
@@ -18,10 +18,10 @@ public class Article {
 	
 	public Article() {}
 
-	public int getArticleId() {
+	public Integer getArticleId() {
 		return ArticleId;
 	}
-	public void setArticleId(int articleId) {
+	public void setArticleId(Integer articleId) {
 		ArticleId = articleId;
 	}
 	
