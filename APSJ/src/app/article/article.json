@@ -1,0 +1,11 @@
+{
+    "article": [
+        {
+            "id_a": 1,
+            "libelle": "desc",
+            "marque": "unemarque",
+            "prix": 15,
+            "categorie": "categorie"
+        }
+    ]
+}
