@@ -1,5 +1,8 @@
 package classes;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Article {
 
 	private int ArticleId;
@@ -57,6 +60,20 @@ public class Article {
 		String str= this.ArticleId +" "+ this.Libelle +" "+  this.Marque  +" "+  this.Prix  +" "+  this.categorie + "\n";
 	
 		return str;
+	}
+	
+	public Map toMap() {
+		Map<String,String> map = new HashMap<String,String>();
+		String id= String.valueOf(this.ArticleId);
+		String prix = String.valueOf(this.Prix);
+		String categorie = String.valueOf(this.categorie);
+		map.put("id_a", id);
+		map.put("libelle", this.getLibelle());
+		map.put("marque", this.getMarque());
+		map.put("prix", prix);
+		map.put("categorie", categorie);
+
+		return map;
 	}
 	
 	

@@ -26,6 +26,8 @@ import rest.todo.model.Todo;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import com.google.gson.Gson;
+
 
 /// Will map the resource to the URL articles
 @Path("/articles")
@@ -95,11 +97,12 @@ import java.sql.SQLException;
         List<Article> todos = new ArrayList<Article>();
         ArticleService a= new ArticleService();
         todos = a.viewArticle();
-        String result ="";
+        String json = "";
+        Gson gson = new Gson();
         for(int i=0;i<todos.size();i++) {
-        	result+=todos.get(i).toString();
+        	json+= gson.toJson(todos.get(i).toMap());
         }
-        return result;
+        return json;
     }
     
   //Returns the list of articles for a specific category
@@ -110,11 +113,12 @@ import java.sql.SQLException;
     	List<Article> todos = new ArrayList<Article>();
         ArticleService a= new ArticleService();
         todos = a.viewArticleCategorie(categorie);
-        String result ="";
+        String json = "";
+        Gson gson = new Gson();
         for(int i=0;i<todos.size();i++) {
-        	result+=todos.get(i).toString();
+             json+= gson.toJson(todos.get(i).toMap());
         }
-        return result;
+        return json;
     }
     
     //Returns the characteristics of a specific Article 
