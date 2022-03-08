@@ -13,6 +13,7 @@ import { StockageAccessoiresComponent } from "./stockage-accessoires/stockage-ac
 import { CleUsbComponent } from "./cle-usb/cle-usb.component"
 import { RegisterComponent } from "./register/register.component"
 import { ArticleComponent } from "./article/article.component"
+import { ArticleCrudComponent } from './article-crud/article-crud.component';
 
 const routes: Routes = [
   { path: "",redirectTo:'Connexion',pathMatch:'full' },
@@ -29,6 +30,7 @@ const routes: Routes = [
   { path: "CleUSB",component: CleUsbComponent },
   { path: "Register",component: RegisterComponent },
   { path: "Article",component: ArticleComponent },
+  { path: "ArticleCrud",component: ArticleCrudComponent },
 
 ];
 

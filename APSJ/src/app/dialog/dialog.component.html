@@ -1,0 +1,28 @@
+<h1 mat-dialog-title>Add Product Form</h1>
+<div mat-dialog-content>
+    <form [formGroup] = "productForm">
+        <mat-form-field appearance="outline">
+            <mat-label>Libelle</mat-label>
+            <input formControlName="libelle" matInput placeholder="Name">
+          </mat-form-field>
+          <label for=""><h1>Product Freshness</h1></label>
+          <mat-radio-group formControlName="categorie"
+          class="example-radio-group">
+              <mat-radio-button class="example-radio-button" *ngFor="let categorie of categorieList" [value]="categorie" >
+                {{categorie}}
+              </mat-radio-button>
+          </mat-radio-group>
+          <mat-form-field appearance="outline">
+            <mat-label>Prix</mat-label>
+            <input formControlName="prix" matInput type="number" placeholder="prix">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Marque</mat-label>
+            <input formControlName="marque" matInput placeholder="Nom">
+          </mat-form-field>
+    </form>
+</div>
+<div mat-dialog-actions [align]="'end'">
+    <button mat-raised-button color="warn" mat-dialog-close> Close</button>
+    <button style="margin-left: 10px;" mat-raised-button color="primary" mat-dialog-close (click)="addProduct()"> {{actionBtn}}</button>
+</div>

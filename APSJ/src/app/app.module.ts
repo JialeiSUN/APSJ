@@ -27,6 +27,22 @@ import { ArticlesModule } from './articles/articles.module';
 import { ObservableComponent } from './observable/observable.component';
 import { ArticleService } from './article.service';
 import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DialogComponent } from './dialog/dialog.component';
+import { ArticleCrudComponent } from './article-crud/article-crud.component';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatRadioModule} from '@angular/material/radio';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,6 +65,8 @@ import { CommonModule } from '@angular/common';
     RegisterComponent,
     ArticleComponent,
     ObservableComponent,
+    DialogComponent,
+    ArticleCrudComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,8 +76,21 @@ import { CommonModule } from '@angular/common';
     NgbModule,
     ArticlesModule,
     HttpClientModule,
-    CommonModule
-
+    CommonModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatRadioModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
  // providers: [ArticleService],
   bootstrap: [AppComponent]
