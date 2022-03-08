@@ -91,7 +91,7 @@ public class User {
 		map.put("role", this.role.toString());
 		return map;
 	}
-	
+
 	
 	
 	

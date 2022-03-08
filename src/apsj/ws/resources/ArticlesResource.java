@@ -3,11 +3,11 @@
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
+import javax.ws.rs.PATCH;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -25,6 +25,9 @@ import rest.todo.model.Todo;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import java.lang.String;
 
 /// Will map the resource to the URL articles
 @Path("/articles")
@@ -40,6 +43,27 @@ import java.sql.SQLException;
     @Context
     Request request;
 
+    
+    @POST
+    @Path("/insert")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String insertArticle(Article article) {
+        ArticleService a= new ArticleService();
+    	Boolean result = a.insertArticle(article);
+        return result.toString();
+    }
+    
+    
+    @PATCH
+    @Path("/update")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String updateArticle(Article article) {
+        ArticleService a= new ArticleService();
+    	Boolean result = a.updateArticle(article);
+        return result.toString();
+    }
+    
+    
     // Return the list of articles to the user in the browser
     @GET
     @Produces(MediaType.TEXT_XML)
@@ -49,6 +73,23 @@ import java.sql.SQLException;
         return todos;
     }
     
+    
+    //Deletes a a specific article 
+    @GET
+    @Path("/id/{id}/delete")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String deleteArticle(@PathParam("id") Integer id) {
+        Boolean result;
+    	ArticleService a= new ArticleService();
+    	result = a.deleteArticle(id);
+        if (result.equals(true)) {
+        	return "L'article "+ id.toString()+ " a bien �t� supprim�";
+        }
+        else {
+        	return "L'article "+ id.toString()+ " n'a pas �t� supprim�";
+        }
+    }   
+    
  // Return the list of articles to the user in the browser in JSON format
     @GET
     @Produces({MediaType.APPLICATION_JSON })
@@ -56,14 +97,24 @@ import java.sql.SQLException;
         List<Article> todos = new ArrayList<Article>();
         ArticleService a= new ArticleService();
         todos = a.viewArticle();
-        String result ="";
+        String json = "[";
+        Gson gson = new Gson();
         for(int i=0;i<todos.size();i++) {
-        	result+=todos.get(i).toString();
+        	if(i!=(todos.size()-1)) {
+        		json+= gson.toJson(todos.get(i).toMap())+",";
+        	}
+        	else {
+        		json+= gson.toJson(todos.get(i).toMap());
+        	}
+             
         }
-        return result;
+        return json+"]";
+        
     }
     
-  //Returns the list of articles for a specific category
+
+
+//Returns the list of articles for a specific category
     @GET
     @Path("/{categorie}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -71,11 +122,19 @@ import java.sql.SQLException;
     	List<Article> todos = new ArrayList<Article>();
         ArticleService a= new ArticleService();
         todos = a.viewArticleCategorie(categorie);
-        String result ="";
+        String json = "[";
+        Gson gson = new Gson();
         for(int i=0;i<todos.size();i++) {
-        	result+=todos.get(i).toString();
+        	if(i!=(todos.size()-1)) {
+        		json+= gson.toJson(todos.get(i).toMap())+",";
+        	}
+        	else {
+        		json+= gson.toJson(todos.get(i).toMap());
+        	}
+             
         }
-        return result;
+        
+        return json+"]";
     }
     
     //Returns the characteristics of a specific Article 
@@ -101,21 +160,6 @@ import java.sql.SQLException;
         return "il y a " + String.valueOf(count);
     }
 
-    @POST
-    @Produces(MediaType.TEXT_HTML)
-    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    public void newTodo(@FormParam("id") String id,
-            @FormParam("summary") String summary,
-            @FormParam("description") String description,
-            @Context HttpServletResponse servletResponse) throws IOException {
-        Todo todo = new Todo(id, summary);
-        if (description != null) {
-            todo.setDescription(description);
-        }
-        TodoDao.instance.getModel().put(id, todo);
-
-        servletResponse.sendRedirect("../create_todo.html");
-    }
 
     // Defines that the next path parameter after todos is
     // treated as a parameter and passed to the TodoResources

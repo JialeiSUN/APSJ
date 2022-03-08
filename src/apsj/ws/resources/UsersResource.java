@@ -46,8 +46,8 @@ public class UsersResource {
     	User user = new User();
     	UserService u = new UserService();
     	user = u.findUserById(id);
-   	 Gson gson = new Gson();
-   	 String json = gson.toJson(user.tomap());
+   	 	Gson gson = new Gson();
+   	 	String json = gson.toJson(user.tomap());
        return json;
     }
     

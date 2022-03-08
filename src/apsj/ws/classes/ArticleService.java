@@ -1,7 +1,7 @@
 package apsj.ws.classes;
 
 import java.sql.Connection;
-
+import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
@@ -26,20 +26,93 @@ public class ArticleService implements ArticleServiceRemote {
 	//Insert an Article in the database
 	@Override
 	public boolean insertArticle(Article Article) {
-		// TODO Auto-generated method stub
-		return false;
+		String prix=String.valueOf(Article.getPrix());
+		java.sql.Statement s = null;
+		try {
+			Connection conn = sqlconnexion.conn;
+			s= conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.CONCUR_UPDATABLE);
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+        try { 
+            //Query to retrieve the contents of the employee_data table
+            String query = "select * from Article";
+            //Executing the query
+            ResultSet rs = s.executeQuery(query);
+            rs.beforeFirst();
+            rs.moveToInsertRow();
+            rs.updateString(1, Article.getArticleId().toString());
+            rs.updateString(2, Article.getLibelle());
+            rs.updateString(3, Article.getMarque());
+            rs.updateString(4, prix);
+            rs.updateString(5, Article.getCategorie().toString());
+            //Deleting a column from the ResultSet object
+            rs.insertRow();        
+        	return true;
+        }
+        catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}  
 	}
+
+
 	//Update an existing Article
 	@Override
-	public boolean updateArticle(int id) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean updateArticle(Article Article) {
+		String prix=String.valueOf(Article.getPrix());
+		java.sql.Statement s = null;
+		try {
+			Connection conn = sqlconnexion.conn;
+			s= conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.CONCUR_UPDATABLE);
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+        try { 
+            //Query to retrieve the contents of the employee_data table
+            String query = "select * from Article where id_a = "+ Article.getArticleId().toString();
+            //Executing the query
+            ResultSet rs = s.executeQuery(query);
+            rs.beforeFirst();
+            //Updating the values of the Article
+            while(rs.next()){
+                rs.updateString(2, Article.getLibelle());
+                rs.updateString(3, Article.getMarque());
+                rs.updateString(4, prix);
+                rs.updateString(5, Article.getCategorie().toString());
+               rs.updateRow();
+            };
+            return true;
+        }
+        catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}  
 	}
 
 	@Override
-	public boolean deleteArticle(int id) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean deleteArticle(Integer id) {
+		String sql = "select * from Article where id_a = "+ id.toString();
+		java.sql.Statement s = null;
+		try {
+			Connection conn = sqlconnexion.conn;
+			s= conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.CONCUR_UPDATABLE);
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+        try { 
+        	ResultSet rs= s.executeQuery(sql);
+        	rs.next();
+        	rs.deleteRow();
+        	return true;
+        }
+        catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}        
 	}
 	
 	//END CUD methods
