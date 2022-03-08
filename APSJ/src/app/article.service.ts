@@ -1,21 +1,35 @@
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { provideRoutes, Router } from '@angular/router';
 import { Articles } from './interfaces/Articles';
-import { map, Observable } from 'rxjs';
-
+import { Injectable, OnInit } from '@angular/core';
 
 export interface ArticleServiceResponse {
   count: number;
   stores: Array<Articles>;
   }
 
+  @Injectable()
 
-export class ArticleService {
+export class ArticleService implements OnInit{
+  articles: Articles[] = [];
 
+  constructor( private http : HttpClient, private router:Router) {  
+    //this.http.get("http://localhost:8080/APSJ/rest/PC_Portable").toPromise().then(data=>{
+ 
+    }
+    ngOnInit(): void {
+      this.getPcPortable();
+    }
 
-  constructor( private http : HttpClient, private router:Router) {   }
+    public getPcPortable(){
+      this.http.get<ArticleServiceResponse>("http://localhost:8080/APSJ/rest/articles/PC_Portable").subscribe(result=>{
+        this.articles = result.stores
+        console.log(result)
+        console.log(this.articles)
+      });
+ 
+ }
+
+   }
   
-  getPcPortable(): Observable<Array<Articles>>{
-     return this.http.get<ArticleServiceResponse>("http://localhost:8080/apsj/articles/PC_Portable").pipe(map(response => response.stores));
-  }
-}
+

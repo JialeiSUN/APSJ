@@ -25,7 +25,8 @@ import { RegisterComponent } from './register/register.component';
 import { ArticleComponent } from './article/article.component';
 import { ArticlesModule } from './articles/articles.module';
 import { ObservableComponent } from './observable/observable.component';
-
+import { ArticleService } from './article.service';
+import { CommonModule } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +34,7 @@ import { ObservableComponent } from './observable/observable.component';
     HeaderComponent,
     SectionComponent,
     FooterComponent,
-    PcPortableComponent,
+   PcPortableComponent,
     PcBureauComponent,
     HomeComponent,
     NavbarComponent,
@@ -56,10 +57,11 @@ import { ObservableComponent } from './observable/observable.component';
     FormsModule,
     NgbModule,
     ArticlesModule,
-    HttpClientModule
+    HttpClientModule,
+    CommonModule
 
   ],
-  providers: [],
+ // providers: [ArticleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

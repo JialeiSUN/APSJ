@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ArticleService } from '../article.service';
 import { Articles } from '../interfaces/Articles';
-
+import { TestService } from '../test.service';
 
 @Component({
   selector: 'app-pc-portable',
@@ -12,18 +12,25 @@ export class PcPortableComponent implements OnInit {
 
   articles: Array<Articles> = new Array<Articles>();
 
-  constructor(private articleService : ArticleService) { }
+  constructor(private test : TestService) { }
 
   ngOnInit(): void {
     this.getData();
   }
 
   private getData(){
-    this.articleService.getPcPortable().subscribe(result =>{
-      this.articles = result
-      console.log(result)
-    });
-    
+    this.test.getProduct()
+    .subscribe({
+      next:(res)=>{
+        //console.log(res)
+        console.log(typeof res)
+        this.articles = res
+        console.log(this.articles)
+      },
+      error:(err)=>{
+        alert("Error")
+      }
+    })
   }
 
 }
