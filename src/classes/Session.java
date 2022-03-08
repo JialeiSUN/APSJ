@@ -1,30 +1,29 @@
 package classes;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.ArrayList;
 
-public class Commande {
-	
-	private int id;
+public class Session {
+
+	private int Id;
 	private int REF_User;
-	private float Total;
+	private float total;
 	
-	public Commande() {}
+	public Session() {}
 	
-	public Commande(int id, int ref, float total) {
-		this.id=id;
-		this.setREF_User(ref);
+	public Session(int id, int REF_User, float total) {
+		this.setId(id);
+		this.setREF_User(REF_User);
 		this.setTotal(total);
+
 	}
-	
+
 	public int getId() {
-		return id;
+		return Id;
 	}
-	
+
 	public void setId(int id) {
-		this.id = id;
+		Id = id;
 	}
 
 	public int getREF_User() {
@@ -36,27 +35,25 @@ public class Commande {
 	}
 
 	public float getTotal() {
-		return Total;
+		return total;
 	}
 
 	public void setTotal(float total) {
-		Total = total;
+		this.total = total;
 	}
-	
+
 	
 	public Map toMap() {
 		Map<String,String> map = new HashMap<String,String>();
-		String id= String.valueOf(this.id);
+		String id= String.valueOf(this.Id);
 		String ref = String.valueOf(this.REF_User);
-		String total = String.valueOf(this.Total);
-		map.put("id_commande", id);
+		String total = String.valueOf(this.total);
+		map.put("Id_Session", id);
 		map.put("Ref_User", ref);
 		map.put("Total", total);
 
 		return map;
 	}
-	
-	
 	
 
 }
