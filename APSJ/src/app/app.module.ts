@@ -26,8 +26,28 @@ import { ArticleComponent } from './article/article.component';
 import { ArticlesModule } from './articles/articles.module';
 import { ObservableComponent } from './observable/observable.component';
 import { ArticleService } from './article.service';
+<<<<<<< HEAD
 import { PanierComponent } from './panier/panier.component';
 
+=======
+import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DialogComponent } from './dialog/dialog.component';
+import { ArticleCrudComponent } from './article-crud/article-crud.component';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatRadioModule} from '@angular/material/radio';
+>>>>>>> b41060da4295c75562622357bd48d7d29760479c
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +55,7 @@ import { PanierComponent } from './panier/panier.component';
     HeaderComponent,
     SectionComponent,
     FooterComponent,
-    PcPortableComponent,
+   PcPortableComponent,
     PcBureauComponent,
     HomeComponent,
     NavbarComponent,
@@ -50,7 +70,12 @@ import { PanierComponent } from './panier/panier.component';
     RegisterComponent,
     ArticleComponent,
     ObservableComponent,
+<<<<<<< HEAD
     PanierComponent,
+=======
+    DialogComponent,
+    ArticleCrudComponent,
+>>>>>>> b41060da4295c75562622357bd48d7d29760479c
   ],
   imports: [
     BrowserModule,
@@ -59,10 +84,28 @@ import { PanierComponent } from './panier/panier.component';
     FormsModule,
     NgbModule,
     ArticlesModule,
-    HttpClientModule
-
+    HttpClientModule,
+    CommonModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatRadioModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
+<<<<<<< HEAD
   providers: [ArticleService],
+=======
+ // providers: [ArticleService],
+>>>>>>> b41060da4295c75562622357bd48d7d29760479c
   bootstrap: [AppComponent]
 })
 export class AppModule { }
