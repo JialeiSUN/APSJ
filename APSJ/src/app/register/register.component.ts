@@ -37,7 +37,7 @@ export class RegisterComponent implements OnInit {
       alert("Failed")
     })
     */
-    this.http.post<any>("http://localhost:8080/APSJ/rest/users/siginup",JSON.stringify(this.registerForm.value)).subscribe(next =>{
+    this.http.post<any>("http://localhost:8080/apsj/users/siginup",JSON.stringify(this.registerForm.value)).subscribe(next =>{
       alert("Signup Successfull");
       this.registerForm.reset();
       this.router.navigate(['connexion'])

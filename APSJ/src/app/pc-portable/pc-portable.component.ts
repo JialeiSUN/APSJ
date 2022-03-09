@@ -21,7 +21,7 @@ export class PcPortableComponent implements OnInit {
   }
 
   private getData(){
-    this.test.getProduct()
+    this.test.getPcPortable()
     .subscribe({
       next:(res)=>{
         //console.log(res)

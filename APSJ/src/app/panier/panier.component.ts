@@ -18,37 +18,29 @@ export class PanierComponent implements OnInit {
   constructor(private panierservice : PanierService, private articleservice: ArticleService) { }
 
   ngOnInit(): void {
-    this.getCurrentPanier();
-    this.getArticlesInPanier();
+    this.getData();
   }
 
-  private getCurrentPanier(){
+  private getData(){
     this.panierservice.getPanier("1")
     .subscribe({
       next:(res)=>{
         console.log(typeof res)
         this.paniers = res
         console.log(this.paniers)
+        this.paniers.forEach(element => {
+          this.articleservice.getArticleById(element.REF_Article).subscribe({
+            next:(res)=>{
+              console.log(res)
+              this.articles.push(res)
+              console.log(this.articles)
+            }
+          })
+        });
       },
       error:(err)=>{
         alert("Error")
       }
     })
-  }
-
-  private getArticlesInPanier(){
-    /*let array = [1,2,3];
-    for (let i = 0; i < this.paniers.length; i++) {
-    console.log(this.paniers[i]);
-  }*/
-    this.paniers.forEach(element => {
-      this.articleservice.getArticleById(element.REF_Article).subscribe({
-        next:(res)=>{
-          console.log(res)
-          this.articles.push(res)
-          console.log(this.articles)
-        }
-      })
-    });
   }
 }
