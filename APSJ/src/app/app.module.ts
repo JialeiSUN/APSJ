@@ -26,6 +26,7 @@ import { ArticleComponent } from './article/article.component';
 import { ArticlesModule } from './articles/articles.module';
 import { ObservableComponent } from './observable/observable.component';
 import { ArticleService } from './article.service';
+import { PanierComponent } from './panier/panier.component';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DialogComponent } from './dialog/dialog.component';
@@ -43,6 +44,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatRadioModule} from '@angular/material/radio';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,6 +67,7 @@ import {MatRadioModule} from '@angular/material/radio';
     RegisterComponent,
     ArticleComponent,
     ObservableComponent,
+    PanierComponent,
     DialogComponent,
     ArticleCrudComponent,
   ],
@@ -92,6 +95,7 @@ import {MatRadioModule} from '@angular/material/radio';
     MatPaginatorModule,
     MatSortModule
   ],
+  providers: [ArticleService],
  // providers: [ArticleService],
   bootstrap: [AppComponent]
 })

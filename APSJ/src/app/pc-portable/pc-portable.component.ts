@@ -8,11 +8,13 @@ import { TestService } from '../test.service';
   templateUrl: './pc-portable.component.html',
   styleUrls: ['./pc-portable.component.css']
 })
+
 export class PcPortableComponent implements OnInit {
 
   articles: Array<Articles> = new Array<Articles>();
 
-  constructor(private test : TestService) { }
+  constructor(private test : ArticleService) { }
+
 
   ngOnInit(): void {
     this.getData();
