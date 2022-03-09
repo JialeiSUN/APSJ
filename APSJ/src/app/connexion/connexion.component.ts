@@ -12,7 +12,7 @@ export class ConnexionComponent implements OnInit {
   messageError: string ="";
   login: string ="";
   mdp: string ="";
-  url = 'http://localhost:8080/APSJ/rest/users/id/1';
+  url = 'http://localhost:8080/apsj/users/id/1';
  //url = 'http://echo.jsontest.com/key/value/one/two'
  public httpOptions = {
   headers: new HttpHeaders({

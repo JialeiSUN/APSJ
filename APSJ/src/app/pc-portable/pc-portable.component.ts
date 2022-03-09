@@ -8,22 +8,30 @@ import { Articles } from '../interfaces/Articles';
   templateUrl: './pc-portable.component.html',
   styleUrls: ['./pc-portable.component.css']
 })
+
 export class PcPortableComponent implements OnInit {
 
   articles: Array<Articles> = new Array<Articles>();
 
-  constructor(private articleService : ArticleService) { }
+  constructor(private test : ArticleService) { }
 
   ngOnInit(): void {
     this.getData();
   }
 
   private getData(){
-    this.articleService.getPcPortable().subscribe(result =>{
-      this.articles = result
-      console.log(result)
-    });
-    
+    this.test.getPcPortable()
+    .subscribe({
+      next:(res)=>{
+        //console.log(res)
+        console.log(typeof res)
+        this.articles = res
+        console.log(this.articles)
+      },
+      error:(err)=>{
+        alert("Error")
+      }
+    })
   }
 
 }

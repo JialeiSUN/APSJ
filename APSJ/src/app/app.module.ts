@@ -25,6 +25,8 @@ import { RegisterComponent } from './register/register.component';
 import { ArticleComponent } from './article/article.component';
 import { ArticlesModule } from './articles/articles.module';
 import { ObservableComponent } from './observable/observable.component';
+import { ArticleService } from './article.service';
+import { PanierComponent } from './panier/panier.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,7 @@ import { ObservableComponent } from './observable/observable.component';
     RegisterComponent,
     ArticleComponent,
     ObservableComponent,
+    PanierComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,7 +62,7 @@ import { ObservableComponent } from './observable/observable.component';
     HttpClientModule
 
   ],
-  providers: [],
+  providers: [ArticleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
