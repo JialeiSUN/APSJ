@@ -60,7 +60,7 @@ public class ArticleService implements ArticleServiceRemote {
 
 	//Update an existing Article
 	@Override
-	public boolean updateArticle(Article Article) {
+	public boolean updateArticle(Article Article, Integer id) {
 		String prix=String.valueOf(Article.getPrix());
 		java.sql.Statement s = null;
 		try {
@@ -72,7 +72,7 @@ public class ArticleService implements ArticleServiceRemote {
 		}
         try { 
             //Query to retrieve the contents of the employee_data table
-            String query = "select * from Article where id_a = "+ Article.getArticleId().toString();
+            String query = "select * from Article where id_a = "+ id ;
             //Executing the query
             ResultSet rs = s.executeQuery(query);
             rs.beforeFirst();

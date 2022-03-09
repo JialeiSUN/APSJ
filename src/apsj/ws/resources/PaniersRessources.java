@@ -3,6 +3,7 @@ package apsj.ws.resources;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.PATCH;
 import javax.ws.rs.POST;
@@ -53,7 +54,7 @@ public class PaniersRessources {
     
     
     //Deletes a a specific Panier 
-    @GET
+    @DELETE
     @Path("/id/{id}/delete")
     @Produces(MediaType.APPLICATION_JSON)
     public String deletePanier(@PathParam("id") Integer id) {
@@ -88,7 +89,29 @@ public class PaniersRessources {
         return json+"]";
     }
     
-    //Returns the characteristics of a specific Command 
+    
+ // Return the list of Paniers to the user in the browser in JSON format for a specific session
+    @GET
+    @Path("/session/{id}")
+    @Produces({MediaType.APPLICATION_JSON })
+    public String getPaniersBySession(@PathParam("id") Integer id) {
+        List<Panier> todos = new ArrayList<Panier>();
+        PanierService a= new PanierService();
+        todos = a.ViewPanierBySession(id);
+        String json = "[";
+        Gson gson = new Gson();
+        for(int i=0;i<todos.size();i++) {
+        	if(i!=(todos.size()-1)) {
+        		json+= gson.toJson(todos.get(i).toMap())+",";
+        	}
+        	else {
+        		json+= gson.toJson(todos.get(i).toMap());
+        	}
+        }
+        return json+"]";
+    }
+    
+    //Returns the characteristics of a specific Panier 
     @GET
     @Path("/id/{id}")
     @Produces(MediaType.APPLICATION_JSON)

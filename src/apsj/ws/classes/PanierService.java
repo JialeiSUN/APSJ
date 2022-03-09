@@ -33,7 +33,7 @@ public class PanierService implements PanierServiceRemote {
 		}
         try { 
             //Query to retrieve the contents of the employee_data table
-            String query = "select * from Panier";
+            String query = "select * from Panier_Article";
             //Executing the query
             ResultSet rs = s.executeQuery(query);
             rs.beforeFirst();
@@ -68,7 +68,7 @@ public class PanierService implements PanierServiceRemote {
 		}
         try { 
             //Query to retrieve the contents of the employee_data table
-            String query = "select * from Panier where id_panier = "+ id;
+            String query = "select * from Panier_Article where id_panier = "+ id;
             //Executing the query
             ResultSet rs = s.executeQuery(query);
             rs.beforeFirst();
@@ -90,7 +90,7 @@ public class PanierService implements PanierServiceRemote {
 	@Override
 	public ArrayList<Panier> viewPanier() {
 		ArrayList<Panier> result= new ArrayList<Panier>();
-		String sql = "select * from Panier";
+		String sql = "select * from Panier_Article";
         java.sql.Statement s = null;
 		try {
 			Connection conn = sqlconnexion.conn;
@@ -111,9 +111,10 @@ public class PanierService implements PanierServiceRemote {
         return result;		
 	}
 
+	
 	@Override
 	public boolean deletePanier(Integer id) {
-		String sql = "select * from Panier where id_panier = "+ id.toString();
+		String sql = "select * from Panier_Article where id_panier = "+ id.toString();
 		java.sql.Statement s = null;
 		try {
 			Connection conn = sqlconnexion.conn;
@@ -137,7 +138,7 @@ public class PanierService implements PanierServiceRemote {
 	@Override
 	public Panier viewPanierById(Integer id) {
 		Panier result = new Panier();
-		String sql = "select * from Panier where id_panier = "+ id.toString();
+		String sql = "select * from Panier_Article where id_panier = "+ id.toString();
         java.sql.Statement s = null;
 		try {
 			Connection conn = sqlconnexion.conn;
@@ -159,7 +160,7 @@ public class PanierService implements PanierServiceRemote {
 
 	@Override
 	public int countPanier() {
-		String sql = "select count * from Panier";
+		String sql = "select count * from Panier_Article";
 		java.sql.Statement s = null;
 		try {
 			Connection conn = sqlconnexion.conn;
@@ -177,6 +178,30 @@ public class PanierService implements PanierServiceRemote {
 			e.printStackTrace();
 		}        
 		return 0;
+	}
+
+	@Override
+	public ArrayList<Panier> ViewPanierBySession(Integer id) {
+		ArrayList<Panier> result= new ArrayList<Panier>();
+		String sql = "select * from Panier_Article where REF_Session = " + id.toString() ;
+        java.sql.Statement s = null;
+		try {
+			Connection conn = sqlconnexion.conn;
+			s= conn.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+        try {
+			ResultSet rs= s.executeQuery(sql);
+			while (rs.next()) {
+					Panier a = new Panier(rs.getInt(1),rs.getInt(2),rs.getInt(3),rs.getInt(4)); 
+			        result.add(a);
+		    }
+	    }
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+        return result;		
 	}
 
 }

@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.PATCH;
@@ -55,11 +56,11 @@ import com.google.gson.Gson;
     
     
     @PATCH
-    @Path("/update")
+    @Path("/update/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public String updateArticle(Article article) {
+    public String updateArticle(Article article, Integer id) {
         ArticleService a= new ArticleService();
-    	Boolean result = a.updateArticle(article);
+    	Boolean result = a.updateArticle(article,id);
         return result.toString();
     }
     
@@ -75,8 +76,8 @@ import com.google.gson.Gson;
     
     
     //Deletes a a specific article 
-    @GET
-    @Path("/id/{id}/delete")
+    @DELETE
+    @Path("/delete/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public String deleteArticle(@PathParam("id") Integer id) {
         Boolean result;
@@ -113,12 +114,19 @@ import com.google.gson.Gson;
     	List<Article> todos = new ArrayList<Article>();
         ArticleService a= new ArticleService();
         todos = a.viewArticleCategorie(categorie);
-        String json = "";
+        String json = "[";
         Gson gson = new Gson();
         for(int i=0;i<todos.size();i++) {
-             json+= gson.toJson(todos.get(i).toMap());
+        	if(i!=(todos.size()-1)) {
+        		json+= gson.toJson(todos.get(i).toMap())+",";
+        	}
+        	else {
+        		json+= gson.toJson(todos.get(i).toMap());
+        	}
+             
         }
-        return json;
+        
+        return json+"]";
     }
     
     //Returns the characteristics of a specific Article 
@@ -129,8 +137,10 @@ import com.google.gson.Gson;
         Article article = new Article();
     	ArticleService a= new ArticleService();
     	article = a.viewArticleById(id);
-        String result = article.toString();
-        return result;
+    	 String json = "[";
+         Gson gson = new Gson();
+         json+= gson.toJson(article.toMap());
+        return json+"]";
     }   
 
     // returns the number of articles

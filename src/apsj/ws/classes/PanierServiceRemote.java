@@ -24,6 +24,11 @@ public interface PanierServiceRemote {
 	public @WebResult(name="viewResponse")
 		ArrayList<Panier> viewPanier(); 
 	
+	@WebMethod(action="urn:view",operationName="ViewPanierBySession")
+	public @WebResult(name="viewResponse")
+		ArrayList<Panier> ViewPanierBySession(@WebParam(name="SessionId")
+													Integer id); 
+	
 	@WebMethod(action="urn:delete",operationName="DeletePanier")
 	public @WebResult(name="viewResponse")
 		boolean deletePanier(@WebParam(name="PanierId")
