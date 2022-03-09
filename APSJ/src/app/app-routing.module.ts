@@ -13,11 +13,8 @@ import { StockageAccessoiresComponent } from "./stockage-accessoires/stockage-ac
 import { CleUsbComponent } from "./cle-usb/cle-usb.component"
 import { RegisterComponent } from "./register/register.component"
 import { ArticleComponent } from "./article/article.component"
-<<<<<<< HEAD
 import { PanierComponent } from './panier/panier.component';
-=======
 import { ArticleCrudComponent } from './article-crud/article-crud.component';
->>>>>>> b41060da4295c75562622357bd48d7d29760479c
 
 const routes: Routes = [
   { path: "",redirectTo:'Connexion',pathMatch:'full' },
@@ -34,12 +31,8 @@ const routes: Routes = [
   { path: "CleUSB",component: CleUsbComponent },
   { path: "Register",component: RegisterComponent },
   { path: "Article",component: ArticleComponent },
-<<<<<<< HEAD
   { path: "Panier",component: PanierComponent },
-
-=======
   { path: "ArticleCrud",component: ArticleCrudComponent },
->>>>>>> b41060da4295c75562622357bd48d7d29760479c
 
 ];
 
