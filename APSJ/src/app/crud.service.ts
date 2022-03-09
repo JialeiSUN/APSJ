@@ -7,16 +7,16 @@ export class CrudService {
 
   constructor(private http: HttpClient) { }
   postProduct(data:any){
-    return this.http.post<any>("http://localhost:8080/apsj/articles/insert/",data);
+    return this.http.post<any>("http://localhost:8080/APSJ/rest/articles/insert/",data);
   }
   getProduct(){
-    return this.http.get<any>("http://localhost:8080/apsj/articles/");
+    return this.http.get<any>("http://localhost:8080/APSJ/rest/articles/");
   }
   
   putProduct(data:any,id : number){
-    return this.http.post<any>("http://localhost:8080/apsj/articles/update/"+id,data)
+    return this.http.post<any>("http://localhost:8080/APSJ/rest/articles/update/"+id,data)
   }
   deleteProduct(id:number){
-    return this.http.delete<any>("http://localhost:8080/apsj/articles/delete/"+id)
+    return this.http.delete<any>("http://localhost:8080/APSJ/rest/articles/delete/"+id)
   }
 }

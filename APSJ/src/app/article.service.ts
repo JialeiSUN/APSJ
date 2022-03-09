@@ -13,10 +13,31 @@ export class ArticleService {
     }
   
   getPcPortable(){
-     return this.http.get<any>('http://localhost:8080/apsj/articles/PC_Portable');
+     return this.http.get<any>('http://localhost:8080/APSJ/rest/articles/PC_Portable');
   }
+  getPC_de_Bureau(){
+    return this.http.get<any>('http://localhost:8080/APSJ/rest/articles/PC_de_Bureau');
+ }
+ getAccessoires_ordinateurs(){
+  return this.http.get<any>('http://localhost:8080/APSJ/rest/articles/Accessoires_ordinateurs');
+}
+getSmart_phone(){
+  return this.http.get<any>('http://localhost:8080/APSJ/rest/articles/Smart_phone');
+}
+getTel_Fixe(){
+  return this.http.get<any>('http://localhost:8080/APSJ/rest/articles/Tel_Fixe');
+}
+getAccessoires_téléphone(){
+  return this.http.get<any>('http://localhost:8080/APSJ/rest/articles/Accessoires_téléphone');
+}
+getDisque_dur(){
+  return this.http.get<any>('http://localhost:8080/APSJ/rest/articles/Disque_dur');
+}
+getAccessoires_stockage(){
+  return this.http.get<any>('http://localhost:8080/APSJ/rest/articles/Accessoires_stockage');
+}
 
   getArticleById(id:String){
-    return this.http.get<any>("http://localhost:8080/apsj/articles/id/"+id);
+    return this.http.get<any>("http://localhost:8080/APSJ/rest/articles/id/"+id);
   }
 }

@@ -13,6 +13,6 @@ export class PanierService {
   constructor(private http : HttpClient) { }
 
   getPanier(id: String){
-    return this.http.get<any>("http://localhost:8080/apsj/paniers/session/"+id);
+    return this.http.get<any>("http://localhost:8080/APSJ/rest/paniers/session/"+id);
   }
 }
